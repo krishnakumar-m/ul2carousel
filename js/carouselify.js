@@ -77,9 +77,11 @@ loadImages = function () {
 initCarousel = function() {
     csl.width = (window.innerWidth - 2*spacer.width);
     csl.height = (maxHeight + 2 * spacer.height);
-
-    carousel.style.top = csl.top + "px";
-    carousel.style.left = csl.left + "px";
+    
+    
+    
+   // carousel.style.top = csl.top + "px";
+    //carousel.style.left = csl.left + "px";
     carousel.style.width = csl.width + "px";
     carousel.style.height = csl.height + "px";
 
