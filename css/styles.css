@@ -1,0 +1,18 @@
+body
+{
+  font-size: 40pt;
+}
+
+.pic{
+  
+        width: 0;
+	height: 0;
+	border-left: 240px solid transparent;
+	border-right: 240px solid transparent;
+	border-bottom: 480px solid Green;
+	
+	
+	
+}
+
+
