@@ -1,3 +1,5 @@
+var carousel = (function() {
+
 var slides = [],
     spacer = {
     width: 5,
@@ -10,6 +12,9 @@ var csl = {width:0,height:0,top:20,left:10};
 createCarousel = function(id) {
 
     carousel = document.getElementById(id);
+    var rect = carousel.getBoundingClientRect();
+    csl.top = rect.top;
+    csl.left = rect.left;
     carousel.setAttribute("class", "carousel");
 
 };
@@ -76,13 +81,11 @@ loadImages = function () {
 
 initCarousel = function() {
     csl.width = (window.innerWidth - 2*spacer.width);
+   // csl.width = carousel.getBoundingClientRect().width;
     csl.height = (maxHeight + 2 * spacer.height);
-    
-    
-    
-   // carousel.style.top = csl.top + "px";
-    //carousel.style.left = csl.left + "px";
-    carousel.style.width = csl.width + "px";
+   carousel.style.top = csl.top + "px";
+    carousel.style.left = csl.left + "px";
+    //carousel.style.width = csl.width + "px";
     carousel.style.height = csl.height + "px";
 
     unitDeg = 360 / nSlides;
@@ -116,29 +119,6 @@ initEvents = function() {
     stopAngle = 0;
 
     hndl = null;
-
-    /*carousel.addEventListener('touchstart', function() {
-				  var touchobj = event.changedTouches[0];
-				  startx = parseInt(touchobj.clientX); 
-
-
-			      }, false);
-
-    carousel.addEventListener('touchmove', function() {
-				  var touchobj = event.changedTouches[0]; 
-				  if (parseInt(touchobj.clientX) > startx)
-				  {
-				      slideAndFocus(slideRight);
-				  }
-				  else
-				  {
-				      slideAndFocus(slideLeft);
-				  };
-                                    
-
-			      }, false);*/
-			      
-    
 
 };
 
@@ -189,16 +169,19 @@ addSliders = function() {
     slider = document.createElement("li");
     slider.setAttribute("class","slider");
     slider.innerHTML ="&#8680;";
-    slider.style.left=(csl.width-100)+"px";
+   slider.style.left=(csl.width-100)+"px";
+   //slider.style.cssFloat ="right";
     slider.style.lineHeight = csl.height+"px";
     carousel.appendChild(slider);
     
     slider.addEventListener("click",function(){slideAndFocus(slideRight);},false);
 };
 
-carouselify = function (id) {
-    
+//carouselify = function (id) {
+   return function (id) {
     createCarousel(id);
     loadImages();
 
 };
+
+})();
